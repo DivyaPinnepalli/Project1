@@ -1,0 +1,40 @@
+import java.util.Scanner;
+class Calculator {
+    double a, b;
+    String operation;
+    Calculator(double a, double b, String operation) {
+        this.a = a;
+        this.b = b;
+        this.operation = operation;
+    }
+    void performOperation() {
+        if (operation.equalsIgnoreCase("addition")) {
+            System.out.println("Result: " + (a + b));
+        } else if (operation.equalsIgnoreCase("subtraction")) {
+            System.out.println("Result: " + (a - b));
+        } else if (operation.equalsIgnoreCase("multiplication")) {
+            System.out.println("Result: " + (a * b));
+        } else if (operation.equalsIgnoreCase("division")) {
+            if (b != 0)
+                System.out.println("Result: " + (a / b));
+            else
+                System.out.println("Error: Division by zero");
+        } else {
+            System.out.println("Invalid operation");
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+        double a = sc.nextDouble();
+        System.out.print("Enter second number: ");
+        double b = sc.nextDouble();
+        sc.nextLine(); // clear newline
+        System.out.print("Enter operation (Addition/Subtraction/Multiplication/Division): ");
+        String op = sc.nextLine();
+        Calculator calc = new Calculator(a, b, op);
+        calc.performOperation();
+    }
+}
